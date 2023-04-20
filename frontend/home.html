@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Agrega los estilos de Bootstrap -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+    />
+    <title>Home</title>
+  </head>
+  <body class="fam-template">
+    <h1>Entradas para eventos</h1>
+
+    <h2>Próximos eventos</h2>
+    <script id="card-container" type="template">
+      <div class="card">
+        <p>{{title}}</p>
+        <img src="{{image}}" alt="">
+      </div>
+    </script>
+
+    <h2>Mis eventos</h2>
+    <div class="card"></div>
+
+    <!-- Agrega los scripts de Popper, JQuery y Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"></script>
+
+    <!-- Agrega tu script de JavaScript -->
+    <script>
+      // Se necesita levantar un live server para que la url funcione.
+      $(function () {
+        $.ajax({
+          dataType: "json",
+          url: "http://127.0.0.1:5500/frontend/lib/test.json",
+          success: function (content) {
+            var temp = $.trim($("#card-container").html());
+            $.each(content, function (index, obj) {
+              var x = temp
+                .replace("{{title}}", obj.title)
+                .replace("{{image}}", obj.img);
+              $(".fam-template").append(x);
+            });
+          },
+        });
+      });
+    </script>
+    
+  </body>
+</html>
