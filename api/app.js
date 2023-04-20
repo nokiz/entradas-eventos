@@ -20,13 +20,13 @@ fastify.register(userSignupRoutes);
 
 // See: https://firebase.google.com/docs/web/learn-more#config-object
 const firebaseConfig = {
-  apiKey: "AIzaSyBixMhGCtnK1gurtJPAWiaoUavgn_qzy_4",
-  authDomain: "curso-flutter-41d49.firebaseapp.com",
-  databaseURL: "https://curso-flutter-41d49-default-rtdb.europe-west1.firebasedatabase.app",
-  projectId: "curso-flutter-41d49",
-  storageBucket: "curso-flutter-41d49.appspot.com",
-  messagingSenderId: "970311993569",
-  appId: "1:970311993569:web:1f37b115d9e91c37090fa0"
+  apiKey: process.env.FB_API_KEY,
+  authDomain: process.env.FB_AUTH_DOMAIN,
+  databaseURL: process.env.FB_DATABASE_URL,
+  projectId: process.env.FB_PROJECT_ID,
+  storageBucket: process.env.FB_STORAGE_BUCKET,
+  messagingSenderId: process.env.FB_MESSAGING_SENDER_ID,
+  appId: process.env.FB_APP_ID,
 };
 
 // Initialize Firebase
@@ -35,6 +35,7 @@ const app = initializeApp(firebaseConfig);
 // Define listening options
 const options = {
   port: process.env.SERVER_PORT,
+  host: process.env.SERVER_HOST,
   // Puedes agregar otras opciones aquí, como la dirección IP o el número de workers
 };
 
