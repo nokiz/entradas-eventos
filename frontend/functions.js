@@ -13,11 +13,5 @@ function userLoginOrSignup(email, password, endpoint) {
       } else {
         console.error("ERROR: Response not ok");
       }
-    })
-    .then((data) => {
-      console.log(data); // Hacer algo con la respuesta del servidor
-    })
-    .catch((error) => {
-      console.error("ERROR:", error);
     });
 }
